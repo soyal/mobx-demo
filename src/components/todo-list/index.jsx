@@ -1,12 +1,17 @@
 import React from 'react'
 import TodoItem from '../todo-item'
 
-const TodoList = ({ data }) => {
+const TodoList = ({ data, viewType }) => {
   return (
     <ul className="todo_list">
-      <TodoItem></TodoItem>
-      <TodoItem></TodoItem>
-      <TodoItem></TodoItem>
+      {data.filter((item) => {
+        return item.type === viewType
+      }).map((todoItem) => {
+        return (
+          <TodoItem key={todoItem.id}
+            data={todoItem}></TodoItem>
+        )
+      })}
     </ul>
   )
 }

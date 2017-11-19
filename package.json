@@ -61,7 +61,8 @@
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "less": "^2.7.3",
-    "less-loader": "^4.0.5"
+    "less-loader": "^4.0.5",
+    "mobx-react-devtools": "^4.2.15"
   },
   "jest": {
     "collectCoverageFrom": [
