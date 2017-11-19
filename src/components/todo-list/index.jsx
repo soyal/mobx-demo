@@ -2,6 +2,7 @@ import React from 'react'
 import TodoItem from '../todo-item'
 
 const TodoList = ({ data, viewType }) => {
+  console.log('list render')
   return (
     <ul className="todo_list">
       {data.filter((item) => {

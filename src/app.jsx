@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     const store = this.store
-console.dir(this)
+
     return (
       <div className="todo">
         <DevTools></DevTools>
