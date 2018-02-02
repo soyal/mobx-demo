@@ -14,7 +14,6 @@ const TodoList = observer(({ data, viewType }) => {
             return <TodoItem key={todoItem.id} data={todoItem} />
           })}
       </ul>
-      <span>length: {data.length}</span>
     </div>
   )
 })
