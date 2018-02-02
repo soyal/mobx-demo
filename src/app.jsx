@@ -31,7 +31,9 @@ class App extends Component {
         <h1 className="todo_title">todo list</h1>
 
         {/*输入部分*/}
-        <TodoInput></TodoInput>
+        <TodoInput onEnter={(e) => {
+          store.addItem(e.target.value)
+        }}></TodoInput>
 
         {/*todo列表*/}
         <TodoList data={store.list}

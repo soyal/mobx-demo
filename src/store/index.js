@@ -1,30 +1,27 @@
 /**
  * 根store
  */
-import {
-  observable,
-  action,
-  runInAction
-} from 'mobx'
+import { observable, action, runInAction } from 'mobx'
 
 import TodoItemStore from './todo-item'
 
 import { fetchList } from '../api/list'
 
 export default class RootStore {
-  @observable
-  viewType = 'todo'  // todo undo complete
+  @observable viewType = 'todo' // todo undo complete
 
-  @observable
-  list = []  // Array<TodoItem> 所有列表项
+  @observable list = [] // Array<TodoItem> 所有列表项
 
-  filters = [{
-    text: '待完成',
-    value: 'todo'
-  }, {
-    text: '已完成',
-    value: 'complete'
-  }]
+  filters = [
+    {
+      text: '待完成',
+      value: 'todo'
+    },
+    {
+      text: '已完成',
+      value: 'complete'
+    }
+  ]
 
   @action.bound
   async fetchList() {
@@ -39,13 +36,22 @@ export default class RootStore {
   }
 
   @action.bound
+  addItem(text) {
+    this.list.push(
+      new TodoItemStore({
+        id: Date.now(),
+        text,
+        type: 0
+      })
+    )
+  }
+
+  @action.bound
   changeFilter(viewType) {
     this.viewType = viewType
   }
 
   _parseList(originData) {
-    return originData.map((data) => (
-      new TodoItemStore(data)
-    ))
+    return originData.map(data => new TodoItemStore(data))
   }
 }
